@@ -12,3 +12,9 @@ commands:
     aliases: [sendnukes]
     permission: nukesplugin.sendnukes
     permission-message: You cannot own nukes.
+  radiation:
+    description: Toggles radioactivity.
+    usage: /radiation
+    aliases: [radiation]
+    permission: nukesplugin.radiation
+    permission-message: You cannot toggle radiation.

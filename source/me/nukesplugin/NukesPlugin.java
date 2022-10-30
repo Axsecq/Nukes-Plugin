@@ -7,6 +7,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import me.nukesplugin.commands.Radiation;
 import me.nukesplugin.commands.SendNukes;
 import me.nukesplugin.configuration.Config;
 import me.nukesplugin.utilities.InventoryUtil;
@@ -42,6 +43,7 @@ public class NukesPlugin extends JavaPlugin implements Listener {
 		
 		// Register all the commands.
 		getCommand("sendnukes").setExecutor(new SendNukes(this));
+		getCommand("radiation").setExecutor(new Radiation(this));
 		
 		// Run radiation every couple seconds.
 		new BukkitRunnable() {
