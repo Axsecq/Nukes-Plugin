@@ -1,0 +1,14 @@
+name: NukesPlugin
+description: Adds Nukes to Your Server!
+version: 1.0.0
+
+main: me.nukesplugin.NukesPlugin
+api-version: 1_12_R2
+
+commands:
+  sendnukes:
+    description: Allows you to get access to nukes.
+    usage: /sendnukes <X> <Y> <Z> <type>
+    aliases: [sendnukes]
+    permission: nukesplugin.sendnukes
+    permission-message: You cannot own nukes.
