@@ -8,5 +8,5 @@ This plugin is built for the version 1.12.2 but you surely can port it to other 
 ## Binaries
 To download the plugin, head to the releases tab and download the latest version.
 
-## How to install?
+## Installation
 To install the plugin, simply put it into your `plugins` directory.
