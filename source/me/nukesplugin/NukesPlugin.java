@@ -12,6 +12,7 @@ import me.nukesplugin.commands.SendNukes;
 import me.nukesplugin.configuration.Config;
 import me.nukesplugin.utilities.InventoryUtil;
 import me.nukesplugin.utilities.RadiationUtil;
+import net.md_5.bungee.api.ChatColor;
 
 public class NukesPlugin extends JavaPlugin implements Listener {
 	
@@ -53,9 +54,11 @@ public class NukesPlugin extends JavaPlugin implements Listener {
 			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 160, 2, false, false)));
 			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.POISON,    100, 0, false, false)));
 			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,    100, 0, false, false)));
+			    	
+			    	Bukkit.getOnlinePlayers().forEach(a -> a.sendTitle(ChatColor.RED + "Radiation", ChatColor.DARK_RED + "You are poisoned by radiation."));
 		    	}
 		    }
-		}.runTaskTimer(this, 0L, 40L);
+		}.runTaskTimer(this, 0L, 60L);
 		
 		// Register all the events.
 		Bukkit.getPluginManager().registerEvents(this, this);
