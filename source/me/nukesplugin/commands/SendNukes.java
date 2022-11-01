@@ -51,7 +51,7 @@ public class SendNukes implements CommandExecutor {
 		World world = player.getWorld();
 		
 		// Distance between explosions.
-		int distance = 20;
+		int distance = 15;
 		
 		// Get the X Y Z arguments.
 		int x = Integer.parseInt(arguments[0]);
@@ -125,11 +125,11 @@ public class SendNukes implements CommandExecutor {
 	private void spawnExplosion(World world, int x, int y, int z) {
 		world.spawn(new Location(world, x, y, z), Creeper.class, entity -> {
 			
-			// Set the name to show up.
+			// Set the name to show everywhere.
 			entity.setCustomName("Nuclear Bomb");
 			
 			// Set the explosion properties.
-			entity.setExplosionRadius(50);
+			entity.setExplosionRadius(75);
 			entity.setMaxFuseTicks(0);
 			
 			// Set the entity properties.
