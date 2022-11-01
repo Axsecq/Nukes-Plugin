@@ -37,13 +37,13 @@ public class SendNukes implements CommandExecutor {
 		// Can't use invalid arguments.
 		if (!(arguments.length > 0) || !(arguments.length < 5)) {
 			sender.sendMessage(ChatColor.RED + "Invalid arguments specified.");
-			return true;
+			return false;
 		}
 		
 		// Can't use tilde coordinates.
 		if (arguments[0].contains("~") || arguments[1].contains("~") || arguments[2].contains("~")) {
 			sender.sendMessage(ChatColor.RED + "Invalid coordinates specified.");
-			return true;
+			return false;
 		}
 		
 		// Get the player and the world.
@@ -51,7 +51,7 @@ public class SendNukes implements CommandExecutor {
 		World world = player.getWorld();
 		
 		// Distance between explosions.
-		int distance = 10;
+		int distance = 20;
 		
 		// Get the X Y Z arguments.
 		int x = Integer.parseInt(arguments[0]);
@@ -62,8 +62,8 @@ public class SendNukes implements CommandExecutor {
 		int power = Integer.parseInt(arguments[3]);
 		
 		// Maximum power.
-		if (power > plugin.config.getConfig().getInt("max-tiers")) {
-			power = plugin.config.getConfig().getInt("max-tiers");
+		if (power > plugin.config.getConfig().getInt("maximum-tiers")) {
+			power = plugin.config.getConfig().getInt("maximum-tiers");
 		}
 		
 		// Minimum power.
@@ -94,6 +94,7 @@ public class SendNukes implements CommandExecutor {
 				for (int loopsZ = 0; loopsZ < power; loopsZ++) {
 					spawnExplosion(world, x, y, z);
 					z += distance;
+					System.out.println("Spawn");
 				}
 				z -= distance * power;
 				y += distance;
@@ -115,7 +116,7 @@ public class SendNukes implements CommandExecutor {
 		Bukkit.getServer().broadcastMessage(ChatColor.DARK_RED + "Warning!!! " + ChatColor.RED + "If you are nearby, hide in a basement.");
 		
 		// Start radiation.
-		plugin.radiationUtil.setRadioactive(true);
+		// plugin.radiationUtil.setRadioactive(true);
 		
 		// Finish executing.
 		return true;
@@ -129,7 +130,7 @@ public class SendNukes implements CommandExecutor {
 			
 			// Set the explosion properties.
 			entity.setExplosionRadius(50);
-			entity.setMaxFuseTicks(0);
+			entity.setMaxFuseTicks(1);
 			
 			// Set the entity properties.
 			entity.setGravity(false);
@@ -140,7 +141,7 @@ public class SendNukes implements CommandExecutor {
 			entity.setInvulnerable(true);
 			
 			// Make sure it's completely invisible.
-			entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 2, false, false));
+			// entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 2, false, false));
 			
 		});
 	}
