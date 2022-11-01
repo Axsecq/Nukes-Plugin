@@ -5,7 +5,7 @@ This is a plugin that adds nukes to your minecraft servers.
 To download the plugin, head to the Releases tab and download the latest stable release.
 
 ## Permissions
-`nukesplugin.sendnukes` - Required to send nukes.
+`nukesplugin.sendnukes` - Required to send nukes. <br>
 `nukesplugin.radiation` - Required to toggle radiation.
 
 ## General Information
