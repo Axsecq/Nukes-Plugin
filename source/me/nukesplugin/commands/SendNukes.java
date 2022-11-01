@@ -116,7 +116,7 @@ public class SendNukes implements CommandExecutor {
 		Bukkit.getServer().broadcastMessage(ChatColor.DARK_RED + "Warning!!! " + ChatColor.RED + "If you are nearby, hide in a basement.");
 		
 		// Start radiation.
-		// plugin.radiationUtil.setRadioactive(true);
+		plugin.radiationUtil.setRadioactive(true);
 		
 		// Finish executing.
 		return true;
@@ -130,7 +130,7 @@ public class SendNukes implements CommandExecutor {
 			
 			// Set the explosion properties.
 			entity.setExplosionRadius(50);
-			entity.setMaxFuseTicks(1);
+			entity.setMaxFuseTicks(0);
 			
 			// Set the entity properties.
 			entity.setGravity(false);
@@ -141,7 +141,7 @@ public class SendNukes implements CommandExecutor {
 			entity.setInvulnerable(true);
 			
 			// Make sure it's completely invisible.
-			// entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 2, false, false));
+			entity.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 2, false, false));
 			
 		});
 	}
