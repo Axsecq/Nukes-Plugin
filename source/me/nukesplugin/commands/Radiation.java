@@ -27,8 +27,10 @@ public class Radiation implements CommandExecutor {
 		// Toggle radiation.
 		plugin.radiationUtil.setRadioactive(!plugin.radiationUtil.isRadioactive());
 		
-		// Finish executing.
+		// Send a success message.
+		sender.sendMessage(ChatColor.GREEN + "Successfully toggled radiation.");
 		
+		// Finish executing.
 		return true;
 	}
 
