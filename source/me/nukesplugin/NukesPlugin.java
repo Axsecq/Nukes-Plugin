@@ -51,7 +51,7 @@ public class NukesPlugin extends JavaPlugin implements Listener {
 		    @Override
 		    public void run() {
 		    	if (radiationUtil.isRadioactive()) {
-			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 160, 2, false, false)));
+			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 100, 2, false, false)));
 			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.POISON,    100, 0, false, false)));
 			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,    100, 0, false, false)));
 			    	
