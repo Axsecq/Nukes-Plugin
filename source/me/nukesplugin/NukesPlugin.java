@@ -50,13 +50,7 @@ public class NukesPlugin extends JavaPlugin implements Listener {
 		new BukkitRunnable() {
 		    @Override
 		    public void run() {
-		    	if (radiationUtil.isRadioactive()) {
-			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 100, 2, false, false)));
-			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.POISON,    100, 0, false, false)));
-			    	Bukkit.getOnlinePlayers().forEach(a -> a.addPotionEffect(new PotionEffect(PotionEffectType.WITHER,    100, 0, false, false)));
-			    	
-			    	Bukkit.getOnlinePlayers().forEach(a -> a.sendTitle(ChatColor.RED + "Radiation", ChatColor.DARK_RED + "You are poisoned by radiation."));
-		    	}
+		    	Bukkit.getOnlinePlayers().forEach(a -> radiationUtil.giveRadiation(a));
 		    }
 		}.runTaskTimer(this, 0L, 60L);
 		
