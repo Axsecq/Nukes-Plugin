@@ -84,7 +84,6 @@ public class SendNukes implements CommandExecutor {
 				for (int loopsZ = 0; loopsZ < power; loopsZ++) {
 					spawnExplosion(world, x, y, z);
 					z += distance;
-					System.out.println("Spawn");
 				}
 				z -= distance * power;
 				y += distance;
