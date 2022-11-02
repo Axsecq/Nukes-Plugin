@@ -16,7 +16,6 @@ public class InventoryUtil {
 		this.plugin = plugin;
 	}
 	
-	// Remove a specific amount of items from inventory.
     public static int removeItems(Inventory inventory, Material type, int amount) {
     	 
         if(type == null || inventory == null)

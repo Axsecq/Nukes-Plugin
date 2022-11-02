@@ -16,37 +16,27 @@ import net.md_5.bungee.api.ChatColor;
 
 public class NukesPlugin extends JavaPlugin implements Listener {
 	
-	// Initialize configurations.
 	public Config config;
 	
-	// Initialize utilities.
 	public RadiationUtil radiationUtil;
 	public InventoryUtil inventoryUtil;
 	
 	@Override
 	public void onEnable() {
-		
-		// Send the loading message.
 		Bukkit.getLogger().info("Loading...");
 		
-		// Create the configurations, if weren't yet.
 		config = new Config(this, "config.yml");
 		
-		// Run the first installation.
 		install();
 		
-		// Initialize utilities.
 		radiationUtil = new RadiationUtil(this);
 		inventoryUtil = new InventoryUtil(this);
 		
-		// Save the radiation state.
 		radiationUtil.setRadioactive(config.getConfig().getBoolean("radioactive"));
 		
-		// Register all the commands.
 		getCommand("sendnukes").setExecutor(new SendNukes(this));
 		getCommand("radiation").setExecutor(new Radiation(this));
 		
-		// Run radiation every couple seconds.
 		new BukkitRunnable() {
 		    @Override
 		    public void run() {
@@ -54,14 +44,11 @@ public class NukesPlugin extends JavaPlugin implements Listener {
 		    }
 		}.runTaskTimer(this, 0L, 60L);
 		
-		// Register all the events.
 		Bukkit.getPluginManager().registerEvents(this, this);
 	}
 	
 	@Override
 	public void onDisable() {
-		
-		// Send the unloading message.
 		Bukkit.getLogger().info("Unloading...");
 	}
 	
