@@ -18,7 +18,8 @@ import me.nukesplugin.utilities.InventoryUtil;
 
 public class SendNukes implements CommandExecutor {
 	
-	// Used for instance access.
+	int distance = 15;
+	
 	NukesPlugin plugin;
 	
 	public SendNukes(NukesPlugin plugin) {
@@ -46,11 +47,9 @@ public class SendNukes implements CommandExecutor {
 		Player player = (Player) sender;
 		World world = player.getWorld();
 		
-		int distance = 15;
-		
-		final int x = Integer.parseInt(arguments[0]);
-		final int y = Integer.parseInt(arguments[1]);
-		final int z = Integer.parseInt(arguments[2]);
+		int x = Integer.parseInt(arguments[0]);
+		int y = Integer.parseInt(arguments[1]);
+		int z = Integer.parseInt(arguments[2]);
 		
 		int power = Integer.parseInt(arguments[3]);
 		
@@ -72,25 +71,29 @@ public class SendNukes implements CommandExecutor {
 			return true;
 		}
 		
-		int newX = x - (distance * power) / 2;
-		int newY = y - (distance * power) / 2;
-		int newZ = z - (distance * power) / 2;
+		final int oldX = x;
+		final int oldY = y;
+		final int oldZ = z;
+		
+		x -= (distance * power) / 2;
+		y -= (distance * power) / 2;
+		z -= (distance * power) / 2;
 		
 		for (int loopsX = 0; loopsX < power; loopsX++) {
 			for (int loopsY = 0; loopsY < power; loopsY++) {
 				for (int loopsZ = 0; loopsZ < power; loopsZ++) {
 					spawnExplosion(world, x, y, z);
-					newZ += distance;
+					z += distance;
 					System.out.println("Spawn");
 				}
-				newZ -= distance * power;
-				newY += distance;
+				z -= distance * power;
+				y += distance;
 			}
-			newY -= distance * power;
-			newX += distance;
+			y -= distance * power;
+			x += distance;
 		}
 		
-		Bukkit.getOnlinePlayers().forEach(a -> plugin.radiationUtil.sendWarning(a, x, y, z));
+		Bukkit.getOnlinePlayers().forEach(a -> plugin.radiationUtil.sendWarning(a, oldX, oldY, oldZ));
 		
 		plugin.radiationUtil.setRadioactive(true);
 		
